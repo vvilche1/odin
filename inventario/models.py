@@ -18,10 +18,12 @@ class Campus(models.Model):
     ubicacion = models.CharField(max_length=100)
     abreviatura = models.CharField(max_length=4)
     descripcion = models.CharField(max_length=800)
-
+    def __str__(self):
+            return self.nombre
     class Meta:
         managed = False
         db_table = 'campus'
+
 
 
 class Usuario(models.Model):
@@ -30,7 +32,8 @@ class Usuario(models.Model):
     nombre = models.CharField(max_length=35)
     rut = models.IntegerField()
     password = models.CharField(max_length=35)
-
+    def __str__(self):
+            return self.nombre
     class Meta:
         managed = False
         db_table = 'usuario'

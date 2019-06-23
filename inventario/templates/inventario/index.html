@@ -8,5 +8,16 @@
 	<h1>Menu principal</h1>
   <br>
   <span>:)</span>
+	<!--........... se realiza la consulta para obtener los datos del nuevo ingreso
+ ................</!-->
+	<ul>
+			{% for usuario in usuarios %}
+					<a href="{% url 'update_usuario' usuario.idusuario %}">
+							<li> {{ usuario.nombre }}</li>
+					</a>
+			{% endfor %}
+	</ul>
+						<!--............ se crea un nuevo producto dentro de la bd................</!-->
+	<a href="{% url 'create_usuario' %}">Crear usuario</a>
 </body>
 </html>
