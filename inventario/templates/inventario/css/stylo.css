@@ -1,0 +1,21 @@
+.barranegra{
+	position: relative;
+	min-height: 20px;
+	
+	border: 1px solid transparent;
+	background-color: #000000!important;
+	color: white;
+	padding-left: 10px;
+	height: 40px;
+}
+.centrarCaja {
+	position:relative;
+	left:8%;
+}
+.pad{
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+.ml-autoedit{
+	margin-left: 80%  !important;
+}

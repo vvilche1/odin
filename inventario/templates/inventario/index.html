@@ -1,23 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Odin</title>
+	<meta charset="utf-8">
+	<title>Sistema de inventario de biblioteca</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link href="css/stylo.css" rel="stylesheet">
+
 </head>
 <body>
-	<h1>Menu principal</h1>
-  <br>
-  <span>:)</span>
-	<!--........... se realiza la consulta para obtener los datos del nuevo ingreso
- ................</!-->
-	<ul>
-			{% for usuario in usuarios %}
-					<a href="{% url 'update_usuario' usuario.idusuario %}">
-							<li> {{ usuario.nombre }}</li>
+	<nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+		<a class="navbar-brand" href="index.html">ODIN</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse ml-autoedit" id="navbarNavDropdown">
+			<ul class="navbar-nav  ">
+
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						José licancura
+						<!-- estos son datos de usuario que se rescatarán una vez logueado el user  -->
 					</a>
-			{% endfor %}
-	</ul>
-						<!--............ se crea un nuevo producto dentro de la bd................</!-->
-	<a href="{% url 'create_usuario' %}">Crear usuario</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Editar perfil</a>
+						<a class="dropdown-item" href="#">Ver historial</a>
+						<a class="dropdown-item" href="#">Cerrar sessión</a>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	<!-- /navbar -->
+	<div class="subnavbar">
+		<div class="subnavbar-inner">
+
+			<!-- /container -->
+		</div>
+		<!-- /subnavbar-inner -->
+	</div>
+	<!-- /subnavbar -->
+	<div class="main">
+		<br>
+		<div class="row col-sm-offset-1">
+			<div class="col-sm-11">
+				<a href="{% url 'create_usuario' %}" class="tn btn btn-info"><i class="glyphicon glyphicon"></i>Crear usuario</a>
+				<a href="graficos.html"  class="tn btn btn-success"><i class="glyphicon glyphicon-eye-sign"> </i> Ver gráficos estadísticos</a>
+				
+			</div>
+		</div>
+		<br>
+		<div class="row box box-info col-sm-offset-1 ">
+			<div class="col-sm-11">
+
+				<div class="widget widget-table action-table">
+					<div class="widget-header"> <i class="icon-th-list"></i>
+						<h3>Inventarios</h3>
+					</div>
+					<!-- /widget-header -->
+					<!-- mockup de interfáz de usuario  -->
+					<div class="box-body">
+				  						<table class="table table-striped table-bordered">
+				 							<thead>
+				 								<tr>
+				 									<th> # </th>
+				 									<th> Nombre </th>
+				 									<th> Rut</th>
+				 									<th> Campus</th>
+				 									<th class="td-actions"> Acciones </th>
+				 								</tr>
+				 							</thead>
+				 							<tbody>
+				 								{% for usuario in usuarios %}
+				 								<tr>
+
+				 									<td> {{ usuario.idusuario }}</td>
+				 									<td> {{ usuario.nombre }}</td>
+				 									<td> {{ usuario.rut }} </td>
+				 									<td> {{ usuario.id_cam }}</td>
+				 									<td class="td-actions"> <a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
+				 										<a href="pdf/index.html" class="btn btn-danger btn-small" target="_blank">pdf</a> <a href="pdf/indexr.html" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>  <a href="agregar.html" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
+
+				 								</tr>
+				 									{% endfor %}
+
+
+				 						</tbody>
+				 					</table>
+					<!-- /widget-content -->
+				</div>
+
+			</div><!--/tab-content-->
+
+		</div><!--/col-9-->
+		<!-- /container -->
+	</div>
+	<!-- /main-inner -->
+</div>
+<!-- /main -->
+
+</div>
+<!-- /extra -->
+<div class="footer">
+	<div class="footer-inner">
+		<div class="container">
+			<div class="row">
+				<div class="span12"> &copy; 2231 <a href="#">LKnSFT</a>. </div>
+				<!-- /span12 -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /footer-inner -->
+</div>
+<!-- /footer -->
+<script src="js/jquery/dist/jquery.min.js"></script>
+<script src="js/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+
 </body>
 </html>
