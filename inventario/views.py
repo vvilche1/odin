@@ -40,10 +40,6 @@ def delete_usuario(request, idusuario):
         return redirect('list_usuario')
 
     return render(request, 'inventario/usuario-delete-confirm.html', {'usuarios': usuarios})
+
 def generar_pdf(request):
-    pdf= crearPdf()
-    response =HttpResponse(content_type='/inventario/pdf')
-    response['Content-Disposition']= 'filename="InventarioAnual.pdf"'
-    response.write(pdf)
-    redirect('generar_pdf')
-    return response
+    return HttpResponse('Esta es mi primera vista')
