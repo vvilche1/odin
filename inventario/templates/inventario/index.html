@@ -11,7 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	<link href="css/stylo.css" rel="stylesheet">
+	<link rel="stylesheet" href="inventario/">
 
 </head>
 <body>
@@ -53,7 +53,7 @@
 			<div class="col-sm-11">
 				<a href="{% url 'create_usuario' %}" class="tn btn btn-info"><i class="glyphicon glyphicon"></i>Crear usuario</a>
 				<a href="graficos.html"  class="tn btn btn-success"><i class="glyphicon glyphicon-eye-sign"> </i> Ver gráficos estadísticos</a>
-				
+
 			</div>
 		</div>
 		<br>
@@ -86,7 +86,7 @@
 				 									<td> {{ usuario.rut }} </td>
 				 									<td> {{ usuario.id_cam }}</td>
 				 									<td class="td-actions"> <a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
-				 										<a href="pdf/index.html" class="btn btn-danger btn-small" target="_blank">pdf</a> <a href="pdf/indexr.html" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>  <a href="agregar.html" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
+				 										<a href="pdf/index.html" class="btn btn-danger btn-small" target="_blank">pdf</a> <a href="{% url 'generar_pdf' %}" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>  <a href="agregar.html" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
 
 				 								</tr>
 				 									{% endfor %}

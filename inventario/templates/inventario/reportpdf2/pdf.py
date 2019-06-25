@@ -7,7 +7,9 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Paragraph, Table, TableStyle
 from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER
 from reportlab.lib import colors
+from io import BytesIO
 
+buffer=BytesIO()
 c = canvas.Canvas("InventarioAnual.pdf")
 # ----------------------- ENCABEZADO ---------------------
 # tamaño de la pagina
@@ -67,7 +69,7 @@ hCD = Paragraph('''<b>CD</b>''', styleBH)
 hRESP = Paragraph('''<b>RESP</b>''', styleBH)
 # Texts
 
-# DATOS 
+# DATOS
 
 titulo1 ="Total de ítems Disponibles en el sistema"
 n1=str(1)
@@ -82,7 +84,7 @@ ISSUE1 = Paragraph(libros1, styleBH)
 LIBROS1 = Paragraph(issue1, styleBH)
 CD1 = Paragraph(cd1, styleBH)
 RESP1 = Paragraph(resp1, styleBH)
-# DATOS 
+# DATOS
 
 titulo2 ="Total de ítems inventariados (Capturados en block de notas y pistola de mando) "
 n2=str(2)
@@ -98,7 +100,7 @@ LIBROS2 = Paragraph(issue2, styleBH)
 CD2 = Paragraph(cd2, styleBH)
 RESP2 = Paragraph(resp2, styleBH)
 
-# DATOS 
+# DATOS
 
 titulo3 ="Total de ítems en préstamo permanente"
 n3=str(3)
@@ -114,7 +116,7 @@ LIBROS3 = Paragraph(issue3, styleBH)
 CD3 = Paragraph(cd3, styleBH)
 RESP3 = Paragraph(resp3, styleBH)
 
-# DATOS 
+# DATOS
 
 titulo4 ="Total de ítems en moroso alumnos"
 n4=str(4)
@@ -129,7 +131,7 @@ ISSUE4 = Paragraph(libros4, styleBH)
 LIBROS4 = Paragraph(issue4, styleBH)
 CD4 = Paragraph(cd4, styleBH)
 RESP4 = Paragraph(resp4, styleBH)
-# DATOS 
+# DATOS
 
 titulo5 ="Total de ítems morosos académico"
 n5=str(5)
@@ -144,7 +146,7 @@ ISSUE5 = Paragraph(libros5, styleBH)
 LIBROS5 = Paragraph(issue5, styleBH)
 CD5 = Paragraph(cd5, styleBH)
 RESP5 = Paragraph(resp5, styleBH)
-# DATOS 
+# DATOS
 
 titulo6 =" 	Total ítems morosos funcionarios"
 n6=str(6)
@@ -159,7 +161,7 @@ ISSUE6 = Paragraph(libros6, styleBH)
 LIBROS6 = Paragraph(issue6, styleBH)
 CD6 = Paragraph(cd6, styleBH)
 RESP6 = Paragraph(resp6, styleBH)
-# DATOS 
+# DATOS
 
 titulo7 ="Total ítem morosos postgrado"
 n7=str(7)
@@ -174,7 +176,7 @@ ISSUE7 = Paragraph(libros7, styleBH)
 LIBROS7 = Paragraph(issue7, styleBH)
 CD7 = Paragraph(cd7, styleBH)
 RESP7 = Paragraph(resp7, styleBH)
-# DATOS 
+# DATOS
 
 titulo8 = "Total ítems morosos PIB"
 n8=str(8)
@@ -189,7 +191,7 @@ ISSUE8 = Paragraph(libros8, styleBH)
 LIBROS8 = Paragraph(issue8, styleBH)
 CD8 = Paragraph(cd8, styleBH)
 RESP8 = Paragraph(resp8, styleBH)
-# DATOS 
+# DATOS
 
 titulo9 ="Total de ítems extraviados"
 n9=str(9)
@@ -204,7 +206,7 @@ ISSUE9 = Paragraph(libros9, styleBH)
 LIBROS9 = Paragraph(issue9, styleBH)
 CD9 = Paragraph(cd9, styleBH)
 RESP9 = Paragraph(resp9, styleBH)
-# DATOS 
+# DATOS
 
 titulo10 ="Total ítems perdidos"
 n10=str(10)
@@ -219,7 +221,7 @@ ISSUE10 = Paragraph(libros10, styleBH)
 LIBROS10 = Paragraph(issue3, styleBH)
 CD10 = Paragraph(cd10, styleBH)
 RESP10 = Paragraph(resp10, styleBH)
-# DATOS 
+# DATOS
 
 titulo11 ="Total ítems inutilizados (Quemado, manchado, mutilado)"
 n11=str(11)
@@ -234,7 +236,7 @@ ISSUE11 = Paragraph(libros11, styleBH)
 LIBROS11 = Paragraph(issue11, styleBH)
 CD11 = Paragraph(cd11, styleBH)
 RESP11 = Paragraph(resp11, styleBH)
-# DATOS 
+# DATOS
 
 titulo12 ="Total de ítems deteriorados para empastar (puede ser recuperable)"
 n12=str(12)
@@ -249,7 +251,7 @@ ISSUE12 = Paragraph(libros12, styleBH)
 LIBROS12 = Paragraph(issue12, styleBH)
 CD12 = Paragraph(cd12, styleBH)
 RESP12 = Paragraph(resp12, styleBH)
-# DATOS 
+# DATOS
 
 titulo13 ="Total ítems en transito"
 n13=str(13)
@@ -264,7 +266,7 @@ ISSUE13 = Paragraph(libros13, styleBH)
 LIBROS13 = Paragraph(issue13, styleBH)
 CD13 = Paragraph(cd13, styleBH)
 RESP13 = Paragraph(resp13, styleBH)
-# DATOS 
+# DATOS
 
 titulo14 ="Total ítems con problemas en catalogación"
 n14=str(14)
@@ -279,7 +281,7 @@ ISSUE14 = Paragraph(libros14, styleBH)
 LIBROS14 = Paragraph(issue14, styleBH)
 CD14 = Paragraph(cd14, styleBH)
 RESP14 = Paragraph(resp14, styleBH)
-# DATOS 
+# DATOS
 
 titulo15 ="Total de ítems faltantes"
 n15=str(15)
@@ -327,4 +329,6 @@ table.wrapOn(c, w, h)
 table.drawOn(c, *coord(1.5, 22.6, cm))
 # Guardar
 c.save()
+pdf=buffer.getvalue()
+buffer.close()
 os.system("InventarioAnual.pdf")
