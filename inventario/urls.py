@@ -6,5 +6,6 @@ urlpatterns = [
     path('create', create_usuario, name='create_usuario'),
     path('update/<int:idusuario>/', update_usuario, name='update_usuario'),
     path('delete/<int:idusuario>/', delete_usuario, name='delete_usuario'),
+
 ]
 # CRUD - CREATE, READ, UPDATE, DELETE

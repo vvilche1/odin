@@ -33,6 +33,7 @@ class Usuario(models.Model):
     rut = models.IntegerField()
     password = models.CharField(max_length=35)
     def __str__(self):
+
             return self.nombre
     class Meta:
         managed = False

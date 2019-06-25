@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
-from .pdf import crearPdf
+#from .pdf import crearPdf
 
 from .models import Campus, Usuario
 from .forms import UsuarioForm
