@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
-#from .pdf import crearPdf
+from django.views.generic import View
 
+from .pdf import *
 from .models import Campus, Usuario
 from .forms import UsuarioForm
 
@@ -42,4 +43,8 @@ def delete_usuario(request, idusuario):
     return render(request, 'inventario/usuario-delete-confirm.html', {'usuarios': usuarios})
 
 def generar_pdf(request):
-    return HttpResponse('Esta es mi primera vista')
+    pdf=crearPdf(request)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition']='filename="InventarioAnual.pdf"'
+    response.write(pdf)
+    return response

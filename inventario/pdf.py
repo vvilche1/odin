@@ -8,20 +8,22 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Paragraph, Table, TableStyle
 from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER
 from reportlab.lib import colors
+from django.http import FileResponse, HttpResponse
 from io import BytesIO
 
-def crearPdf():
+def crearPdf(request):
      #Indicamos el tipo de contenido a devolver, en este caso un pdf
-    response = HttpResponse(content_type='application/pdf')
+#    response = HttpResponse(content_type='application/pdf')
+#    response['Content-Disposition']='filename="InventarioAnual.pdf"'
     buffer=BytesIO()
     c = canvas.Canvas(buffer)
     # ----------------------- ENCABEZADO ---------------------
     # tamaño de la pagina
     w, h = A4
     c.setPageSize(A4)
-    archivo_imagen = settings.MEDIA_ROOT+'templates/inventario/img/logo.png'
+    archivo_imagen = settings.MEDIA_ROOT+'/templates/inventario/img/logo.png'
     # Dibujamos una imagen (IMAGEN, X,Y, WIDTH, HEIGH)
-    c.drawImage('logo.png', 50, 780, 150, 50)
+    c.drawImage(archivo_imagen, 50, 780, 150, 50)
     # dibujamos una linea (X,Y, WIDTH, HEIGH)
     x = 50
     y = h - 100
@@ -333,9 +335,10 @@ def crearPdf():
     table.wrapOn(c, w, h)
     table.drawOn(c, *coord(1.5, 22.6, cm))
     # Guardar
+    c.showPage()
     c.save()
     pdf=buffer.getvalue()
     buffer.close()
-    response.write(pdf)
-    return response
+    return pdf
+    #return FileResponse(buffer, as_attachment=True, filename='InventarioAnual.pdf')
 #os.system("InventarioAnual.pdf")
