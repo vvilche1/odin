@@ -79,7 +79,7 @@ def create_cd(request):
     return render(request, 'inventario/cd-form.html', {'form': form})
 
 def create_inventario(request):
-    form = IssueForm(request.POST or None)
+    form = InventarioForm(request.POST or None)
 
     if form.is_valid():
         form.save()
