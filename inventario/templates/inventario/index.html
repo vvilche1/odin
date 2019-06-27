@@ -11,10 +11,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="inventario/">
+	<link rel="stylesheet" href="css/stylo.cs">
 
 
-	<!-- data table	-->	
+	<!-- data table	-->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 
 
@@ -56,7 +56,7 @@
 		<br>
 		<div class="row col-sm-offset-1">
 			<div class="col-sm-11">
-				<a href="{% url 'create_libros' %}" class="tn btn btn-info"><i class="glyphicon glyphicon"></i>Crear usuario</a>
+				<a href="{% url 'create_libros' %}" class="tn btn btn-info"><i class="glyphicon glyphicon"></i>Crear inventario</a>
 				<a href="graficos.html"  class="tn btn btn-success"><i class="glyphicon glyphicon-eye-sign"> </i> Ver gráficos estadísticos</a>
 
 			</div>
@@ -77,19 +77,19 @@
 				 								<tr>
 				 									<th> # </th>
 				 									<th> Nombre </th>
-				 									<th> Rut</th>
-				 									<th> Campus</th>
+				 									<th> Fecha inicio</th>
+				 									<th> Fecha termino</th>
 				 									<th class="td-actions"> Acciones </th>
 				 								</tr>
 				 							</thead>
 				 							<tbody>
-				 								{% for usuario in usuarios %}
+				 								{% for inventario in inventarios %}
 				 								<tr>
 
-				 									<td> {{ usuario.idusuario }}</td>
-				 									<td> {{ usuario.nombre }}</td>
-				 									<td> {{ usuario.rut }} </td>
-				 									<td> {{ usuario.id_cam }}</td>
+				 									<td> {{ inventario.idinventario }}</td>
+				 									<td> {{ inventario.nombre_inventario }}</td>
+				 									<td> {{ inventario.f_inicio }} </td>
+				 									<td> {{ inventario.f_termino }}</td>
 				 									<td class="td-actions">
 														<a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
 				 										<a href="{% url 'generar_pdf' %}"class="btn btn-danger btn-small">pdf</a>
@@ -136,10 +136,16 @@
 <script src="js/bootstrap.min.js"></script>
 
 <!--data table-->
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>	
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
 
 	<script type="text/javascript">
-		
+
 			$(document).ready( function () {
 				$('#datatables-example').DataTable();
 			 } );

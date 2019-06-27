@@ -5,19 +5,19 @@ from django.views import generic
 from django.views.generic import View
 
 from .pdf import *
-from .models import Campus, Usuario
+from .models import Campus, Usuario, Inventario
 from .forms import UsuarioForm, LibrosForm, IssueForm, CdForm, RespForm,InventarioForm
 
-def list_usuario(request):
-    usuarios = Usuario.objects.all()
-    return render(request, 'inventario/index.html', {'usuarios': usuarios})
+def index(request):
+    inventarios = Inventario.objects.all()
+    return render(request, 'inventario/index.html', {'inventarios': inventarios})
 
-def create_usuario(request):
+def create(request):
     form = UsuarioForm(request.POST or None)
 
     if form.is_valid():
         form.save()
-        return redirect('list_usuario')
+        return redirect('index')
 
     return render(request, 'inventario/usuario-form.html', {'form': form})
 
@@ -28,7 +28,7 @@ def update_usuario(request, idusuario):
 
     if form.is_valid():
         form.save()
-        return redirect('list_usuario')
+        return redirect('index')
 
     return render(request, 'inventario/usuario-form.html', {'form': form, 'usuarios': usuarios})
 
@@ -38,7 +38,7 @@ def delete_usuario(request, idusuario):
 
     if request.method == 'POST':
         usuarios.delete()
-        return redirect('list_usuario')
+        return redirect('index')
 
     return render(request, 'inventario/usuario-delete-confirm.html', {'usuarios': usuarios})
 
@@ -83,7 +83,7 @@ def create_inventario(request):
 
     if form.is_valid():
         form.save()
-        return redirect('list_usuario')
+        return redirect('index')
 
     return render(request, 'inventario/inventario-form.html', {'form': form})
 

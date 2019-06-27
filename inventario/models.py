@@ -139,6 +139,7 @@ class Inventario(models.Model):
     idinventario_issue = models.ForeignKey('Issue', models.DO_NOTHING, db_column='idinventario_issue')
     idinventario_cd = models.ForeignKey(Cd, models.DO_NOTHING, db_column='idinventario_cd')
     idinventario_resp = models.ForeignKey('Resp', models.DO_NOTHING, db_column='idinventario_resp')
+    nombre_inventario = models.CharField(max_length=50)
     f_inicio = models.DateTimeField()
     f_termino = models.DateTimeField()
     f_informe = models.DateTimeField()
