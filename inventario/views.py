@@ -6,7 +6,7 @@ from django.views.generic import View
 
 from .pdf import *
 from .models import Campus, Usuario
-from .forms import UsuarioForm
+from .forms import UsuarioForm, LibrosForm, IssueForm, CdForm, RespForm,InventarioForm
 
 def list_usuario(request):
     usuarios = Usuario.objects.all()
@@ -41,6 +41,54 @@ def delete_usuario(request, idusuario):
         return redirect('list_usuario')
 
     return render(request, 'inventario/usuario-delete-confirm.html', {'usuarios': usuarios})
+
+def create_libros(request):
+    form = LibrosForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('create_issue')
+
+    return render(request, 'inventario/libros-form.html', {'form': form})
+
+def create_issue(request):
+    form = IssueForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('create_resp')
+
+    return render(request, 'inventario/issue-form.html', {'form': form})
+
+def create_resp(request):
+    form = RespForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('create_cd')
+
+    return render(request, 'inventario/resp-form.html', {'form': form})
+
+def create_cd(request):
+    form = CdForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('create_inventario')
+
+    return render(request, 'inventario/cd-form.html', {'form': form})
+
+def create_inventario(request):
+    form = IssueForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_usuario')
+
+    return render(request, 'inventario/inventario-form.html', {'form': form})
+
+
+
 
 def generar_pdf(request):
     pdf=crearPdf(request)
