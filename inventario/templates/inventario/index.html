@@ -13,6 +13,11 @@
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="inventario/">
 
+
+	<!-- data table	-->	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
@@ -60,7 +65,7 @@
 		<div class="row box box-info col-sm-offset-1 ">
 			<div class="col-sm-11">
 
-				<div class="widget widget-table action-table">
+				<div class="widget widget-table action-table" id="datatables-example">
 					<div class="widget-header"> <i class="icon-th-list"></i>
 						<h3>Inventarios</h3>
 					</div>
@@ -130,7 +135,15 @@
 <script src="js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+<!--data table-->
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>	
 
+	<script type="text/javascript">
+		
+			$(document).ready( function () {
+				$('#datatables-example').DataTable();
+			 } );
+	</script>
 
 </body>
 </html>
