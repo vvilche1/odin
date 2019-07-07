@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic import View
 
 from .pdf import *
-from .models import Campus, Usuario, Inventario
+from .models import Campus, Usuario, Inventario, Libros,Issue,Resp,Cd
 from .forms import UsuarioForm, LibrosForm, IssueForm, CdForm, RespForm,InventarioForm
 
 def index(request):
@@ -88,10 +88,13 @@ def create_inventario(request):
     return render(request, 'inventario/inventario-form.html', {'form': form})
 
 
-
-
-def generar_pdf(request):
-    pdf=crearPdf(request)
+def generar_pdf(request,idinventario):
+    inventario = Inventario.objects.get(idinventario=idinventario)
+    libros = Libros.objects.get(idinventario_libros=idinventario)
+    issue = Issue.objects.get(idinventario_issue=idinventario)
+    cd = Cd.objects.get(idinventario_cd=idinventario)
+    resp = Resp.objects.get(idinventario_resp=idinventario)
+    pdf=crearPdf(request,inventario,libros,issue,cd,resp)
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition']='filename="InventarioAnual.pdf"'
     response.write(pdf)

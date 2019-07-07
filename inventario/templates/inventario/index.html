@@ -94,8 +94,8 @@
 													<td> {{ inventario.f_informe }}</td>
 				 									<td class="td-actions">
 														<a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
-				 										<a href="{% url 'generar_pdf' %}"class="btn btn-danger btn-small">pdf</a>
-														<a href="{% url 'generar_pdf' %}" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>
+				 										<a href="{% url 'generar_pdf'  inventario.idinventario %}"class="btn btn-danger btn-small">pdf</a>
+														<a href="{% url 'generar_pdf' inventario.idinventario %}" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>
 														<a href="{% url 'update_inventario' inventario.idinventario %}" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
 
 				 								</tr>
@@ -150,6 +150,7 @@
 
 			$(document).ready( function () {
 				$('#datatables-example').DataTable();
+
 			 } );
 	</script>
 

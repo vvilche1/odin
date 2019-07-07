@@ -11,7 +11,7 @@ urlpatterns = [
     path('Resp',create_resp, name='create_resp'),
     path('Cd',create_cd, name='create_cd'),
     path('Inventario',create_inventario, name='create_inventario'),
-    path('pdf',generar_pdf, name='generar_pdf'),
+    path('pdf/<int:idinventario>/',generar_pdf, name='generar_pdf'),
 
 ]
 # CRUD - CREATE, READ, UPDATE, DELETE
