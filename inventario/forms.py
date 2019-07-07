@@ -11,8 +11,7 @@ class LibrosForm(forms.ModelForm):
 
     class Meta:
         model = Libros
-        fields = ('idinventario_libros',
-                'total_items',
+        fields = ('total_items',
                 'total_items_inventariados',
                 'total_items_en_prestamos_permanente',
                 'total_items_en_morosos_alumnos',
@@ -32,8 +31,7 @@ class IssueForm(forms.ModelForm):
 
     class Meta:
         model = Issue
-        fields = ('idinventario_issue',
-                'total_items',
+        fields = ('total_items',
                 'total_items_inventariados',
                 'total_items_en_prestamos_permanente',
                 'total_items_en_morosos_alumnos',
@@ -53,8 +51,7 @@ class RespForm(forms.ModelForm):
 
     class Meta:
         model = Resp
-        fields = ('idinventario_resp',
-                'total_items',
+        fields = ('total_items',
                 'total_items_inventariados',
                 'total_items_en_prestamos_permanente',
                 'total_items_en_morosos_alumnos',
@@ -74,8 +71,7 @@ class CdForm(forms.ModelForm):
 
     class Meta:
         model = Cd
-        fields = ('idinventario_cd',
-                'total_items',
+        fields = ('total_items',
                 'total_items_inventariados',
                 'total_items_en_prestamos_permanente',
                 'total_items_en_morosos_alumnos',
@@ -95,14 +91,11 @@ class InventarioForm(forms.ModelForm):
 
     class Meta:
         model = Inventario
-        fields = ('idinventario',
-            'idinventario_libros',
-            'idinventario_issue' ,
+        fields = ('idinventario_libros',
+            'idinventario_issue',
             'idinventario_cd',
             'idinventario_resp',
+            'nombre_inventario',
             'f_inicio',
             'f_termino',
-            'f_informe',
-            'f_elaboracion',
-            'f_aprobacion',
-            'f_revision')
+            )

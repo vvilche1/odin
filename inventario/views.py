@@ -22,15 +22,15 @@ def create(request):
     return render(request, 'inventario/usuario-form.html', {'form': form})
 
 
-def update_usuario(request, idusuario):
-    usuarios = Usuario.objects.get(idusuario=idusuario)
-    form = UsuarioForm(request.POST or None, instance=usuarios)
+def update_inventario(request, idinventario):
+    inventario = Inventario.objects.get(idinventario=idinventario)
+    form = InventarioForm(request.POST or None, instance=inventario)
 
     if form.is_valid():
         form.save()
         return redirect('index')
 
-    return render(request, 'inventario/usuario-form.html', {'form': form, 'usuarios': usuarios})
+    return render(request, 'inventario/inventario-form.html', {'form': form, 'inventario': inventario})
 
 
 def delete_usuario(request, idusuario):

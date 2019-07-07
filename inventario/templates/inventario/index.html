@@ -79,6 +79,7 @@
 				 									<th> Nombre </th>
 				 									<th> Fecha inicio</th>
 				 									<th> Fecha termino</th>
+													<th> Fecha informe</th>
 				 									<th class="td-actions"> Acciones </th>
 				 								</tr>
 				 							</thead>
@@ -90,11 +91,12 @@
 				 									<td> {{ inventario.nombre_inventario }}</td>
 				 									<td> {{ inventario.f_inicio }} </td>
 				 									<td> {{ inventario.f_termino }}</td>
+													<td> {{ inventario.f_informe }}</td>
 				 									<td class="td-actions">
 														<a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
 				 										<a href="{% url 'generar_pdf' %}"class="btn btn-danger btn-small">pdf</a>
 														<a href="{% url 'generar_pdf' %}" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>
-														<a href="agregar.html" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
+														<a href="{% url 'update_inventario' inventario.idinventario %}" class="btn btn-primary btn-small">Edit<i class="btn-icon-only icon-remove"> </i> </a>   </td>
 
 				 								</tr>
 				 									{% endfor %}
