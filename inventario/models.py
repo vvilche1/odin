@@ -143,9 +143,10 @@ class Inventario(models.Model):
     f_inicio = models.DateTimeField()
     f_termino = models.DateTimeField()
     f_informe = models.DateTimeField()
-    f_elaboracion = models.DateTimeField()
-    f_aprobacion = models.DateTimeField()
-    f_revision = models.DateTimeField()
+
+
+
+
 
     class Meta:
         managed = False
@@ -153,7 +154,7 @@ class Inventario(models.Model):
 
 
 class Registra(models.Model):
-    idregistro = models.PositiveIntegerField(primary_key=True)
+    idregistro = models.AutoField(primary_key=True)
     idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idusuario')
     idinventario = models.ForeignKey(Inventario, models.DO_NOTHING, db_column='idinventario')
     fecha_registro = models.DateTimeField()
@@ -164,7 +165,7 @@ class Registra(models.Model):
 
 
 class HistorialCd(models.Model):
-    id_historial_c = models.PositiveIntegerField(primary_key=True)
+    id_historial_c =  models.AutoField(primary_key=True)
     idinventario_cd = models.ForeignKey(Cd, models.DO_NOTHING, db_column='idinventario_cd')
     total_items = models.PositiveIntegerField()
     total_items_inventariados = models.PositiveIntegerField()
@@ -188,7 +189,7 @@ class HistorialCd(models.Model):
 
 
 class HistorialIssue(models.Model):
-    id_historial_i = models.PositiveIntegerField(primary_key=True)
+    id_historial_i =  models.AutoField(primary_key=True)
     idinventario_issue = models.ForeignKey('Issue', models.DO_NOTHING, db_column='idinventario_issue')
     total_items = models.IntegerField()
     total_items_inventariados = models.IntegerField()
@@ -212,7 +213,7 @@ class HistorialIssue(models.Model):
 
 
 class HistorialLibros(models.Model):
-    id_historial_l = models.PositiveIntegerField(db_column='id_historial_L', primary_key=True)  # Field name made lowercase.
+    id_historial_l = models.AutoField(db_column='id_historial_L', primary_key=True)  # Field name made lowercase.
     idinventario_libros = models.ForeignKey('Libros', models.DO_NOTHING, db_column='idinventario_libros')
     total_items = models.IntegerField()
     total_items_inventariados = models.IntegerField()
@@ -236,7 +237,7 @@ class HistorialLibros(models.Model):
 
 
 class HistorialResp(models.Model):
-    id_historial_r = models.PositiveIntegerField(primary_key=True)
+    id_historial_r = models.AutoField(primary_key=True)
     idinventario_resp = models.ForeignKey('Resp', models.DO_NOTHING, db_column='idinventario_resp')
     total_items = models.PositiveIntegerField()
     total_items_inventariados = models.PositiveIntegerField()
@@ -260,6 +261,7 @@ class HistorialResp(models.Model):
 
 
 class Edita(models.Model):
+    id = models.AutoField(primary_key=True)
     idusuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     id_historial_c = models.ForeignKey(HistorialCd, models.DO_NOTHING, db_column='id_historial_c')
     fecha_registro = models.DateTimeField()
@@ -270,6 +272,7 @@ class Edita(models.Model):
 
 
 class Modifica(models.Model):
+    id = models.AutoField(primary_key=True)
     idusuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     id_historial_i = models.ForeignKey(HistorialIssue, models.DO_NOTHING, db_column='id_historial_i')
     fecha_registro = models.DateTimeField()
@@ -280,6 +283,7 @@ class Modifica(models.Model):
 
 
 class Cambia(models.Model):
+    id = models.AutoField(primary_key=True)
     idusuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     id_historial_l = models.ForeignKey(HistorialLibros, models.DO_NOTHING, db_column='id_historial_l')
     fecha_registro = models.DateTimeField()
@@ -290,6 +294,7 @@ class Cambia(models.Model):
 
 
 class Actualiza(models.Model):
+    id = models.AutoField(primary_key=True)
     idusuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     id_historial_r = models.ForeignKey('HistorialResp', models.DO_NOTHING, db_column='id_historial_r')
     fecha_registro = models.DateTimeField()
