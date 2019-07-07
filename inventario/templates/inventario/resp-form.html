@@ -48,12 +48,10 @@
 <!--.............INICIO DE FORMULARIO.....................</!-->
 	<div class="form-group ">
 		<form method="POST" class="form ">
-			<div class="form-group ">
 				<div class="container ">
-					<div class="row justify-content-center ">
-						<div class="col-md-6 card">
+					<div class="row justify-content-center align-items-start  ">
+						<div class="col-md-6 card ">
 						<br>
-							<div class="form-group ">
 													<style>	
 													form input {
    													display: inline-block;
@@ -65,15 +63,11 @@
     												width: 300px;
 													</style>					
 							{% csrf_token %}
-							
 							{{ form.as_p}}
-
-							<button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
-							</div>
+							<button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>	
 						</div>
 					</div>
 				</div>
-			</div>
 		</form>
 	</div>
 
