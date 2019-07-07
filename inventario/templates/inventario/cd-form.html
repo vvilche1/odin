@@ -47,13 +47,24 @@
            
     </div>
 <!--.............INICIO DE FORMULARIO.....................</!-->
-  <div class="form-group">
-		<form method="POST" class="form">
+ 	<div class="form-group  ">
+		<form method="POST" class="form  ">
 			<div class="form-group ">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-8">
-							<div class="form-group">										
+				<div class="container ">
+					<div class="row justify-content-center ">
+						<div class="col-md-6 card">
+						<br>
+							<div class="form-group ">
+													<style>	
+													form input {
+   													display: inline-block;
+    												width: 200px;
+  	  												margin-bottom: 10px;
+													}
+													form label {
+    												display: inline-block;
+    												width: 300px;
+													</style>					
 							{% csrf_token %}
 							
 							{{ form.as_p}}
@@ -66,6 +77,7 @@
 			</div>
 		</form>
 	</div>
+
 <!--...............FIN DE FORMULARIO........................</!-->
 
 </body>
