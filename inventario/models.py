@@ -299,6 +299,6 @@ class Actualiza(models.Model):
     id_historial_r = models.ForeignKey('HistorialResp', models.DO_NOTHING, db_column='id_historial_r')
     fecha_registro = models.DateTimeField()
 
-    class Meta:
-        managed = False
-        db_table = 'actualiza'
+    # class Meta:
+    #     managed = False
+    #     db_table = 'actualiza'

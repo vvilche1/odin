@@ -99,3 +99,8 @@ class InventarioForm(forms.ModelForm):
             'f_inicio',
             'f_termino',
             )
+            
+class UploadFileForm(forms.Form):
+
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
