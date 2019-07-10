@@ -72,134 +72,120 @@
 					<!-- /widget-header -->
 					<!-- mockup de interfáz de usuario  -->
 					<div class="box-body">
-						<table class="table table-striped table-bordered" id="datatables-example">
-							<thead>
-								<tr>
-									<th> # </th>
-									<th> Nombre </th>
-									<th> Fecha inicio</th>
-									<th> Fecha termino</th>
-									<th> Fecha informe</th>
-									<th class="td-actions"> Ediciones </th>
-									<th class="td-actions"> Acciones </th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for inventario in inventarios %}
-								<tr>
+				  						<table class="table table-striped table-bordered" id="datatables-example">
+				 							<thead>
+				 								<tr>
+				 									<th> # </th>
+				 									<th> Nombre </th>
+				 									<th> Fecha inicio</th>
+				 									<th> Fecha termino</th>
+													<th> Fecha informe</th>
+													<th class="td-actions"> Ediciones </th>
+				 									<th class="td-actions"> Acciones </th>
+				 								</tr>
+				 							</thead>
+				 							<tbody>
+				 								{% for inventario in inventarios %}
+				 								<tr>
 
-									<td> {{ inventario.idinventario }}</td>
-									<td> {{ inventario.nombre_inventario }}</td>
-									<td> {{ inventario.f_inicio }} </td>
-									<td> {{ inventario.f_termino }}</td>
-									<td> {{ inventario.f_informe }}</td>
-									<td class="td-actions">
-										<a href="{% url 'libro_edit' inventario.idinventario %}" class="btn btn-primary btn-small">Libros<i class="btn-icon-only icon-remove"> </i> </a>
-										<a href="{% url 'issue_edit' inventario.idinventario %}" class="btn btn-primary btn-small">Issue<i class="btn-icon-only icon-remove"> </i> </a>
-										<a href="{% url 'resp_edit' inventario.idinventario %}" class="btn btn-primary btn-small">Resp<i class="btn-icon-only icon-remove"> </i> </a>
-										<a href="{% url 'cd_edit' inventario.idinventario %}" class="btn btn-primary btn-small">Cd<i class="btn-icon-only icon-remove"> </i> </a>
-										<a href="{% url 'inventario_edit' inventario.idinventario %}" class="btn btn-primary btn-small">Inventario<i class="btn-icon-only icon-remove"> </i></a></td>
-									</td>
-									<td class="td-actions">
-
-										<a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn  btn-sm btn-success">Exc</a>
-										
-										<a href="{% url 'generar_pdf'  inventario.idinventario %}"class="btn btn-danger  btn-sm">pdf&nbsp</a>
-										<a href="{% url 'generar_pdf' inventario.idinventario %}" class="btn btn-danger  btn-sm" target="_blank">pdf resumen</a>
-
-										<a href="download/tarea1.xlsx" download="ocumentati.txt" class="btn btn-small btn-success">Exc</a>
-										<a href="{% url 'generar_pdf'  inventario.idinventario %}"class="btn btn-danger btn-small">pdf</a>
-										<a href="{% url 'generar_pdf_resumen' inventario.idinventario %}" class="btn btn-danger btn-small" target="_blank">pdf resumen</a>
+				 									<td> {{ inventario.idinventario }}</td>
+				 									<td> {{ inventario.nombre_inventario }}</td>
+				 									<td> {{ inventario.f_inicio }} </td>
+				 									<td> {{ inventario.f_termino }}</td>
+													<td> {{ inventario.f_informe }}</td>
+													<td class="td-actions">
+				 										<a href="{% url 'libro_edit' inventario.idinventario %}" class="btn btn-primary  btn-sm">Libros<i class="btn-icon-only icon-remove"> </i> </a>
+														<a href="{% url 'issue_edit' inventario.idinventario %}" class="btn btn-primary  btn-sm">Issue <i class="btn-icon-only icon-remove"> </i> </a>
+														<a href="{% url 'resp_edit' inventario.idinventario %}" class="btn btn-primary  btn-sm">Resp<i class="btn-icon-only icon-remove"> </i> </a>
+														<a href="{% url 'cd_edit' inventario.idinventario %}" class="btn btn-primary  btn-sm">Cd&nbsp&nbsp&nbsp&nbsp&nbsp <i class="btn-icon-only icon-remove"> </i> </a>
+														<a href="{% url 'inventario_edit' inventario.idinventario %}" class="btn btn-primary btn-sm">Inventario&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="btn-icon-only icon-remove"> </i></a></td>
+													 </td>
+				 									<td class="td-actions">
+														<a href="download/tarea1.xlsx" download="inventario2019.xlsx" class="btn  btn-sm btn-success">Exc</a>
+														
+				 										<a href="{% url 'generar_pdf'  inventario.idinventario %}"class="btn btn-danger  btn-sm">pdf&nbsp</a>
+														<a href="{% url 'generar_pdf' inventario.idinventario %}" class="btn btn-danger  btn-sm" target="_blank">pdf resumen</a>
 
 
+				 								</tr>
+				 									{% endfor %}
 
-									</tr>
-									{% endfor %}
 
-
-								</tbody>
-							</table>
-							<!-- /widget-content -->
-						</div>
-
-					</div><!--/tab-content-->
-
-				</div><!--/col-9-->
-				<!-- /container -->
-			</div>
-			<!-- /main-inner -->
-		</div>
-		<!-- /main -->
-
-		
-	</div>
-	{% comment %} upload {% endcomment %}
-	<form method="post" enctype="multipart/form-data">
-		{% csrf_token %}
-		<input type="file" name="myfile">
-		<button type="submit">Upload</button>
-	</form>
-
-	{% if uploaded_file_url %}
-	<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-	{% endif %}
-
-	<!-- /extra -->
-	<div class="footer">
-		<div class="footer-inner">
-			<div class="container">
-				<div class="row">
-					<div class="span12"> &copy; 2019 <a href="#">Odin</a>. </div>
-					<!-- /span12 -->
+				 						</tbody>
+				 					</table>
+					<!-- /widget-content -->
 				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /footer-inner -->
+
+			</div><!--/tab-content-->
+
+		</div><!--/col-9-->
+		<!-- /container -->
 	</div>
-	<!-- /footer -->
-	<script src="js/jquery/dist/jquery.min.js"></script>
-	<script src="js/datatables.net/js/jquery.dataTables.min.js"></script>
-	<script src="js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<!-- /main-inner -->
+</div>
+<!-- /main -->
 
-	<!--data table-->
+  
+</div>
+{% comment %} upload {% endcomment %}
 
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
-	<script type="text/javascript" src="jquery.dataTables.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#datatables-example').dataTable( {
+<!-- /extra -->
+<div class="footer">
+	<div class="footer-inner">
+		<div class="container">
+			<div class="row">
+				<div class="span12"> &copy; 2019 <a href="#">Odin</a>. </div>
+				<!-- /span12 -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /footer-inner -->
+</div>
+<!-- /footer -->
+<script src="js/jquery/dist/jquery.min.js"></script>
+<script src="js/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!--data table-->
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+<script type="text/javascript" src="jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatables-example').dataTable( {
 				"sProcessing":     "Procesando...",
-				"sLengthMenu":     "Mostrar _MENU_ registros",
-				"sZeroRecords":    "No se encontraron resultados",
-				"sEmptyTable":     "Ningún dato disponible en esta tabla",
-				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-				"sInfoPostFix":    "",
-				"sSearch":         "Buscar:",
-				"sUrl":            "",
-				"sInfoThousands":  ",",
-				"sLoadingRecords": "Cargando...",
-				"oPaginate": {
-					"sFirst":    "Primero",
-					"sLast":     "Último",
-					"sNext":     "Siguiente",
-					"sPrevious": "Anterior"
-				},
-				"oAria": {
-					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-				}
+	     "sLengthMenu":     "Mostrar _MENU_ registros",
+	     "sZeroRecords":    "No se encontraron resultados",
+	     "sEmptyTable":     "Ningún dato disponible en esta tabla",
+	     "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	     "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+	     "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+	     "sInfoPostFix":    "",
+	     "sSearch":         "Buscar:",
+	     "sUrl":            "",
+	     "sInfoThousands":  ",",
+	     "sLoadingRecords": "Cargando...",
+	     "oPaginate": {
+	         "sFirst":    "Primero",
+	         "sLast":     "Último",
+	         "sNext":     "Siguiente",
+	         "sPrevious": "Anterior"
+	     },
+	     "oAria": {
+	         "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+	         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+	     }
 
 
 
-			} );
-		} );
-	</script>
+        } );
+    } );
+</script>
 
 </body>
 </html>
