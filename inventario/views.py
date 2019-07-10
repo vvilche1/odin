@@ -5,7 +5,6 @@ from django.views import generic
 from django.views.generic import View
 
 from .pdf import *
-from .pdf_resumen import *
 from .models import Campus, Usuario, Inventario, Libros,Issue,Resp,Cd
 from .forms import UsuarioForm, LibrosForm, IssueForm, CdForm, RespForm,InventarioForm
 
@@ -79,17 +78,6 @@ def generar_pdf(request,idinventario):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition']='filename="InventarioAnual.pdf"'
     response.write(pdf)
-    return response
-def generar_pdf_resumen(request,idinventario):
-    inventario = Inventario.objects.get(idinventario=idinventario)
-    libros = Libros.objects.get(idinventario_libros=idinventario)
-    issue = Issue.objects.get(idinventario_issue=idinventario)
-    cd = Cd.objects.get(idinventario_cd=idinventario)
-    resp = Resp.objects.get(idinventario_resp=idinventario)
-    pdf_resumen=crearPdf_resumen(request,inventario,libros,issue,cd,resp)
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition']='filename="InventarioAnual_resumen.pdf"'
-    response.write(pdf_resumen)
     return response
 
 def libro_edit(request, idinventario):
