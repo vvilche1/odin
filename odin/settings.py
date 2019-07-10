@@ -78,9 +78,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inventario',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': 3306,
+        'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
         }
